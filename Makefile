@@ -24,7 +24,7 @@ clean:
 	rm -f nop_testharness mem_testharness
 	
 mem_testharness:	$(SRCS)
-	$(CC) -DSTORAGE_ENGINE=VCStoreInMemory -L/usr/lib64/boost141 $(LIBS:%=-l%) -o $@ $(SRCS)
+	$(CC) -DSTORAGE_ENGINE=VCStoreInMemory $(LIBS:%=-l%) -o $@ $(SRCS)
 
 nop_testharness:	$(SRCS)
-	$(CC) -DSTORAGE_ENGINE=VCStoreNOP -L/usr/lib64/boost141 $(LIBS:%=-l%) -o $@ $(SRCS)
+	$(CC) -DSTORAGE_ENGINE=VCStoreNOP $(LIBS:%=-l%) -o $@ $(SRCS)
