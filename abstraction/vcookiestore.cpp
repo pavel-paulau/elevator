@@ -9,6 +9,7 @@
 #include "vcookiestore.h"
 #include "vcookie.h"
 #include <string.h>
+#include <cstddef>
 
 const unsigned char VC_SERIAL_VERSION = 0;
 
