@@ -9,8 +9,8 @@
 #ifndef LCB_STORE_H
 #define LCB_STORE_H
 
-#include "vcookie/vcookie.h"
-#include "vcookie/vcookiestore.h"
+#include "abstraction/vcookie.h"
+#include "abstraction/vcookiestore.h"
 #include <libcouchbase/couchbase.h>
 
 class VCCouchbaseStore: public VCookieStore
