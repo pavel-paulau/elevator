@@ -2,7 +2,7 @@ SHELL = /bin/sh
 
 srcdir= .
 
-CC = g++ -O3 -pedantic -Wall -Wno-long-long -Wno-variadic-macros
+CC = g++ -O3 -pedantic -Wall -Wno-long-long -Wno-variadic-macros -pthread -o term
 
 
 LIBS = boost_program_options-mt boost_regex rt
