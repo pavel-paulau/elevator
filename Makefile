@@ -5,7 +5,7 @@ srcdir= .
 CC = g++ -O3 -pedantic -Wall -Wno-long-long -Wno-variadic-macros -pthread -o term
 
 
-LIBS = boost_program_options-mt boost_regex rt
+LIBS = boost_program_options-mt boost_program_options boost_regex rt
 
 CDEBUG = -g
 CFLAGS = $(CDEBUG) -I. -I$(srcdir) $(DEFS) \
@@ -21,10 +21,13 @@ all: nop_testharness mem_testharness cb_testharness
 
 .PHONY: clean
 clean:
-	rm -f nop_testharness mem_testharness
-	
+	rm -f nop_testharness mem_testharness cb_testharness
+
 mem_testharness:	$(SRCS)
-	$(CC) -DSTORAGE_ENGINE=VCStoreInMemory $(LIBS:%=-l%) -o $@ $(SRCS)
+	$(CC) -DSTORAGE_ENGINE=VCStoreInMemory -L/usr/lib $(LIBS:%=-l%) -o $@ $(SRCS)
 
 nop_testharness:	$(SRCS)
-	$(CC) -DSTORAGE_ENGINE=VCStoreNOP $(LIBS:%=-l%) -o $@ $(SRCS)
+	$(CC) -DSTORAGE_ENGINE=VCStoreNOP -L/usr/lib $(LIBS:%=-l%) -o $@ $(SRCS)
+
+cb_testharness: 	$(SRCS)
+	$(CC) -DSTORAGE_ENGINE=VCCouchbaseStore -L/usr/lib $(LIBS:%=-l%) -o $@ $(SRCS)
